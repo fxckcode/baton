@@ -144,6 +144,18 @@ func Marshal(r Report) ([]byte, error) {
 	return buf.Bytes(), nil
 }
 
+// Unknown is an installed-or-not row with a null remaining percent.
+func Unknown(id string, installed bool, source, note string) Agent {
+	return Agent{
+		Agent:      id,
+		Installed:  installed,
+		Confidence: ConfidenceUnknown,
+		Source:     source,
+		Windows:    []Window{},
+		Note:       note,
+	}
+}
+
 // String returns a pointer to s, or nil when s is empty.
 func String(s string) *string {
 	if s == "" {
