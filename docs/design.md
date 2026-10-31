@@ -280,3 +280,9 @@ Network or credential reads for Claude OAuth usage, Codex `wham/usage`, Gemini `
 | `hermes usage` | One configured provider | Baton only shells out; it does not reimplement Hermes’s fetchers |
 
 Baton’s job is the handover: `next`, a stable `confidence`, a skill file, and the same binary on Linux, macOS, and Windows.
+
+## Implementation notes
+
+The adapter registry lives in `internal/registry`, not `internal/agent`. Adapters import `internal/agent` for the interface. Putting the constructor in `internal/agent` would import the adapters and cycle.
+
+`baton/v1` also has optional `binary` and `config_path`. They are omitted when empty. They are detection results, not quota. `list --json` uses the same document with `source: "detect"` and a null remaining percent so callers do not learn a second schema.

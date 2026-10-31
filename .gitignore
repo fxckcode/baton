@@ -1,0 +1,5 @@
+/baton
+/baton.exe
+/dist/
+*.test
+coverage.out
