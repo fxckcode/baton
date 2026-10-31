@@ -73,7 +73,7 @@ func TestDetectConfigOnlyAndMissing(t *testing.T) {
 
 func TestConfigDirsOS(t *testing.T) {
 	linux := ConfigDirs("opencode", Paths{GOOS: "linux", Home: "/home/me"})
-	if !has(linux, "/home/me/.local/share/opencode") {
+	if !has(linux, filepath.Join("/home/me", ".local", "share", "opencode")) {
 		t.Fatalf("linux: %v", linux)
 	}
 	win := ConfigDirs("opencode", Paths{GOOS: "windows", Home: `C:\Users\me`, AppData: `C:\Users\me\AppData\Roaming`})
@@ -81,7 +81,7 @@ func TestConfigDirsOS(t *testing.T) {
 		t.Fatalf("windows: %v", win)
 	}
 	mac := ConfigDirs("amp", Paths{GOOS: "darwin", Home: "/Users/me"})
-	if !has(mac, "/Users/me/Library/Application Support/amp") {
+	if !has(mac, filepath.Join("/Users/me", "Library", "Application Support", "amp")) {
 		t.Fatalf("darwin: %v", mac)
 	}
 	codex := ConfigDirs("codex", Paths{

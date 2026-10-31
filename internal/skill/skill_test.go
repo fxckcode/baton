@@ -6,7 +6,8 @@ import (
 )
 
 func TestSkillContract(t *testing.T) {
-	if !strings.HasPrefix(Text, "---\n") {
+	text := strings.ReplaceAll(Text, "\r\n", "\n")
+	if !strings.HasPrefix(text, "---\n") {
 		t.Fatal("missing front matter")
 	}
 	for _, needle := range []string{
