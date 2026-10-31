@@ -1,0 +1,9 @@
+{
+  "provider": "openrouter",
+  "plan": "free",
+  "fetched_at": "2026-09-19T07:58:55Z",
+  "windows": [
+    {"label": "Credits", "used_percent": null, "resets_at": null, "detail": "$12.00 left"}
+  ],
+  "unavailable_reason": null
+}
