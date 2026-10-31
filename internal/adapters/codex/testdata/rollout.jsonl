@@ -1,0 +1,4 @@
+{"timestamp":"2026-10-30T22:00:00Z","type":"response_item","payload":{"type":"message","text":"ignore sk-ant-test-secret and Bearer test-token"}}
+{"timestamp":"2026-10-30T22:30:00Z","type":"event_msg","payload":{"type":"token_count","rate_limits":{"primary":{"used_percent":10,"window_minutes":300,"resets_at":1790000000},"plan_type":"plus"}}}
+{"timestamp":"2026-10-30T22:41:10Z","type":"event_msg","payload":{"type":"token_count","rate_limits":{"limit_id":"codex","primary":{"used_percent":62,"window_minutes":300,"resets_at":1790000000},"secondary":{"used_percent":81,"window_minutes":10080,"resets_at":1790500000},"plan_type":"plus"}}}
+not json at all

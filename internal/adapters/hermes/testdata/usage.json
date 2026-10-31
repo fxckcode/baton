@@ -1,0 +1,13 @@
+{
+  "provider": "openai-codex",
+  "source": "usage_api",
+  "title": "Account limits",
+  "plan": "Plus",
+  "fetched_at": "2026-09-19T07:58:55+00:00",
+  "windows": [
+    {"label": "Session", "used_percent": 37.0, "resets_at": "2026-09-19T21:00:00+00:00", "detail": null},
+    {"label": "Weekly", "used_percent": 12.5, "resets_at": "2026-09-25T09:00:00+00:00", "detail": null}
+  ],
+  "details": ["You have 1 reset banked"],
+  "unavailable_reason": null
+}

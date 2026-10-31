@@ -1,0 +1,29 @@
+{
+  "schema": "baton/v1",
+  "generated_at": "2026-10-31T00:00:00Z",
+  "agents": [
+    {
+      "agent": "codex",
+      "installed": true,
+      "version": "0.80.0",
+      "plan": "plus",
+      "windows": [
+        {
+          "name": "5h",
+          "remaining_pct": 38,
+          "reset_at": "2026-10-31T01:12:00Z"
+        }
+      ],
+      "remaining_pct": 38,
+      "confidence": "exact",
+      "source": "local:codex-rollout",
+      "observed_at": "2026-10-30T22:41:10Z",
+      "stale": false
+    }
+  ],
+  "recommendation": {
+    "agent": "codex",
+    "command": "codex",
+    "reason": "first in chain with remaining_pct >= 15"
+  }
+}
