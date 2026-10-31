@@ -1,0 +1,35 @@
+{
+  "status": "SUCCESS",
+  "response": "synthetic",
+  "command": {
+    "name": "/usage",
+    "data": {
+      "groups": [
+        {
+          "name": "Gemini Models",
+          "buckets": [
+            {
+              "id": "five-hour",
+              "name": "5h limit",
+              "window": "5h",
+              "remaining_fraction": 0.98,
+              "reset_time": "2026-10-31T19:53:00Z"
+            },
+            {
+              "id": "weekly",
+              "name": "Weekly limit",
+              "window": "weekly",
+              "remaining_fraction": 0.4,
+              "reset_time": "2026-11-04T09:10:00Z"
+            },
+            {
+              "id": "bad",
+              "window": "nope",
+              "remaining_fraction": 1.5
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
