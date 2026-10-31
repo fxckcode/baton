@@ -34,8 +34,7 @@ func (Adapter) Detect(ctx context.Context, env agent.Env) agent.Detection {
 
 func (Adapter) Status(_ context.Context, env agent.Env, det agent.Detection) schema.Agent {
 	if !det.Installed {
-		out := schema.Unknown("codex", false, "none", "not installed")
-		return out
+		return schema.Unknown("codex", false, "none", "not installed")
 	}
 	root := det.ConfigPath
 	if root == "" {
@@ -47,7 +46,11 @@ func (Adapter) Status(_ context.Context, env agent.Env, det agent.Detection) sch
 	}
 	files, err := newestRollouts(filepath.Join(root, "sessions"), maxFiles)
 	if err != nil || len(files) == 0 {
-		out := schema.Unknown("codex", true, sourceTag, "no Codex session directory")
+		note := "no Codex rollouts"
+		if err != nil {
+			note = "no Codex session directory"
+		}
+		out := schema.Unknown("codex", true, sourceTag, note)
 		out.Binary = det.Binary
 		out.Version = det.Version
 		return out
@@ -80,7 +83,13 @@ func newestRollouts(dir string, n int) ([]string, error) {
 		mod  int64
 	}, 0)
 	err := filepath.WalkDir(dir, func(path string, d os.DirEntry, walkErr error) error {
-		if walkErr != nil || d == nil || d.IsDir() {
+		if walkErr != nil {
+			if path == dir {
+				return walkErr
+			}
+			return nil
+		}
+		if d == nil || d.IsDir() {
 			return nil
 		}
 		name := d.Name()

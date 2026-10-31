@@ -104,7 +104,15 @@ func TestStatusMissingSessions(t *testing.T) {
 	if got.Confidence != schema.ConfidenceUnknown || got.RemainingPct != nil {
 		t.Fatalf("%+v", got)
 	}
-	if strings.Contains(got.Note, "sk-") {
-		t.Fatal(got.Note)
+	if !strings.Contains(got.Note, "session directory") {
+		t.Fatalf("note %q", got.Note)
+	}
+	home := t.TempDir()
+	if err := os.MkdirAll(filepath.Join(home, "sessions"), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	got = ad.Status(context.Background(), agent.Env{Home: home, Environ: []string{}}, agent.Detection{Installed: true, ConfigPath: home})
+	if got.Note != "no Codex rollouts" {
+		t.Fatalf("note %q", got.Note)
 	}
 }

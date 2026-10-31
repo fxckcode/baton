@@ -101,7 +101,7 @@ func runChecked(opts Options, cmd string, args []string) int {
 	}
 	rt, err := newRuntime(opts, cfg)
 	if err != nil {
-		fmt.Fprintf(opts.Stderr, "config: %v\n", err)
+		fmt.Fprintf(opts.Stderr, "baton: %v\n", err)
 		return 1
 	}
 	switch cmd {
