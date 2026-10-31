@@ -32,7 +32,8 @@ staticcheck ./...
 go test -race ./...
 ```
 
-`staticcheck` v0.5.1 matches the Go 1.22 module.
+CI currently runs `staticcheck` v0.6.1 with Go 1.24. Use that version locally
+when possible so local results match the GitHub Actions check.
 
 ## Commits
 

@@ -1,0 +1,35 @@
+name: Feature request
+description: Propose a narrowly scoped improvement to Baton
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user or maintainer problem should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: Describe the smallest useful change and its observable behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Link upstream documentation, source, or a sanitized fixture that supports the proposal.
+    validations:
+      required: true
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This proposal does not require reading credentials or private provider APIs.
+          required: true
+        - label: I understand unsupported or unverifiable quota data must remain unknown.
+          required: true

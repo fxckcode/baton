@@ -112,6 +112,34 @@ The parsers are tested against fixtures. Those fixtures are the official example
 
 macOS and Windows are covered by the GitHub Actions matrix. Development here ran on Linux.
 
+## Local smoke verification
+
+The repository's deterministic checks passed locally on October 31, 2026:
+
+```sh
+go test ./...
+go vet ./...
+go test -race ./...
+```
+
+The installed CLI smoke check also verified version reporting for Claude Code,
+Codex, Hermes, Antigravity, Kiro, Cursor Agent, Gemini CLI, GitHub Copilot CLI,
+OpenCode, Pi, and Kilo. Live quota probes succeeded for `hermes usage --json`
+and `agy -p "/usage" --output-format json`. The Kiro probe reached its own
+browser-authentication path and exited non-zero because this environment was not
+authenticated; Baton correctly reported Kiro as `unknown` rather than inventing
+a percentage. Version detection and quota parsing are separate guarantees: a
+CLI being installed does not mean Baton has a verified quota source for it.
+
+To reproduce the Baton-level smoke check after building:
+
+```sh
+go build -o baton ./cmd/baton
+./baton list --json
+./baton status --json
+./baton next --json
+```
+
 ## Layout
 
 `cmd/baton` is the entrypoint. `internal/cli` parses flags. `internal/next` is the pure chain picker. `internal/schema` is `baton/v1`. Adapters live in `internal/adapters`. The registry is `internal/registry` so adapters can import the `agent` interface without a cycle.

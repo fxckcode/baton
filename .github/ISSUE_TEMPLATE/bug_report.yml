@@ -1,0 +1,47 @@
+name: Bug report
+description: Report a reproducible problem in Baton
+labels:
+  - bug
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Baton version
+      description: Run `baton version` and paste the result.
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: input
+    id: agent
+    attributes:
+      label: Agent CLI
+      description: Which agent CLI and version are involved?
+      placeholder: codex-cli 0.160.0
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Include the exact command and a redacted output sample.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed credentials, tokens, emails, and raw account data.
+          required: true
